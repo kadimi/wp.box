@@ -1,13 +1,13 @@
 # `wp.dev` a Lightweight WordPress Box
 
-### TLDR;
+## TLDR;
 
 ```shell
 git clone https://github.com/kadimi/wp.dev.git && cd wp.dev && vagrant up
 ```
 Then visit http://wp.dev/ or http://192.168.33.10/.
 
-### Create a `wp.dev` Box
+## Create a `wp.dev` Box
 
 1. **Clone this repository**
 
@@ -39,7 +39,7 @@ Then visit http://wp.dev/ or http://192.168.33.10/.
 
   URL is http://wp.dev/ or whatever hostname you provided.
 
-### Included out of the box
+## Included out of the box
 
 A lot of tools are included, but more importantly:
 
@@ -47,7 +47,7 @@ A lot of tools are included, but more importantly:
 - Composer
 - WP-CLI
 
-### Administrators
+## Administrators
 
 - **WordPress**
   - Username is `admin`
