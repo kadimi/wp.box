@@ -1,5 +1,12 @@
 # `wp.dev` a Lightweight WordPress Box
 
+### TLDR;
+
+```shell
+git clone https://github.com/kadimi/wp.dev.git && cd wp.dev && vagrant up
+```
+Then visit http://wp.dev/ or http://192.168.33.10/.
+
 ### Create a `wp.dev` Box
 
 1. **Clone this repository**
@@ -25,12 +32,12 @@
 
   ```
   192.168.33.10  wp.dev
-  # 192.168.33.10  awesome.box # Or whatever hostname you used.
+  # 192.168.33.10  awesome.box # Or whatever hostname you provided.
   ```
 
 1. **Visit website**
 
-  URL is http://wp.dev or the hostname you provided.
+  URL is http://wp.dev/ or whatever hostname you provided.
 
 ### Included out of the box
 
