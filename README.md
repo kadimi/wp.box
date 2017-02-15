@@ -56,4 +56,3 @@ A lot of tools are included, but more importantly:
 - **Database**
   - Username is `root`
   - Password is `root`
-
