@@ -20,4 +20,24 @@
 
   # # For http://awesome.box/, provide a hostname with the first `vagrant up`
   # hostname='awesome.box' vagrant up
-  ```  
+  ```
+1. **[Maybe](https://github.com/cogitatio/vagrant-hostsupdater "The Vagrant::Hostsupdater plugin adds an entry to your /etc/hosts file on the host system.") update `/etc/hosts`**
+
+  ```
+  192.168.33.10  wp.dev
+  # 192.168.33.10  awesome.box # Or whatever hostname you used.
+  ```
+
+1. **Visit website**
+
+  URL is http://wp.dev or the hostname you provided.
+
+### Included out of the box
+
+A lot of tools are included, but more importantly:
+
+- Adminer (located at `.../adminer.php`)
+- Composer
+- WP-CLI
+
+### 
