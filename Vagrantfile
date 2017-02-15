@@ -61,6 +61,29 @@ Vagrant.configure("2") do |config|
         # Done.
         echo 'Done!'
 
+        # Show website information.
+        echo '##################################################################'
+        echo '                                                                  '
+        echo 'Thank you for developing with wp.dev!                             '
+        echo '                                                                  '
+        echo '                                                                  '
+        echo '                                        _|                        '
+        echo '_|      _|      _|  _|_|_|          _|_|_|    _|_|    _|      _|  '
+        echo '_|      _|      _|  _|    _|      _|    _|  _|_|_|_|  _|      _|  '
+        echo '  _|  _|  _|  _|    _|    _|      _|    _|  _|          _|  _|    '
+        echo '    _|      _|      _|_|_|    _|    _|_|_|    _|_|_|      _|      '
+        echo '                    _|                                            '
+        echo '                    _|                                            '
+        echo '                                                                  '
+        echo '                                                                  '
+        echo '                                                                  '
+        echo 'Your WordPress website details:                                   '
+        echo '- URL      : http://#{config.vm.hostname}/                        '
+        echo '- Username : admin                                                '
+        echo '- Password : password                                             '
+        echo '                                                                  '
+        echo '##################################################################'
+
     SHELL
 
 end
