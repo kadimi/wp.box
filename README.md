@@ -47,4 +47,13 @@ A lot of tools are included, but more importantly:
 - Composer
 - WP-CLI
 
-### 
+### Administrators
+
+- **WordPress**
+  - username is `admin`
+  - password is `password`
+  
+- **Database**
+  - username is `root`
+  - password is `root`
+
