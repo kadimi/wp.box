@@ -50,10 +50,10 @@ A lot of tools are included, but more importantly:
 ### Administrators
 
 - **WordPress**
-  - username is `admin`
-  - password is `password`
+  - Username is `admin`
+  - Password is `password`
   
 - **Database**
-  - username is `root`
-  - password is `root`
+  - Username is `root`
+  - Password is `root`
 
