@@ -1,5 +1,7 @@
 # `wp.dev` a Lightweight WordPress Box
 
+![](https://cdn.rawgit.com/kadimi/wp.dev/master/banner.png "wp.dev banner")
+
 ## TLDR;
 
 ```shell
