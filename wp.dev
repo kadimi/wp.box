@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Require one parameter.
+if ! [ "$#" -eq 1 ]
+then
+	echo -e "\e[1m\e[31mError: Hostname required. Exiting.\e[0m"
+	echo
+	exit 1
+fi
+DIRECTORY=$1
+
+# Check that directory does not exists.
+if [ -d "$DIRECTORY" ]
+then
+	echo -e "\e[1m\e[31mError: Directory ./$DIRECTORY existis, Exiting.\e[0m"
+	echo
+	exit 1
+fi
+
+# Clone repository
+echo 'Cloning kadimi/wp.dev repository.'
+git clone "git@github.com:kadimi/wp.dev.git" "$DIRECTORY"
+echo -e "\e[1m\e[32mRepository cloned.\e[0m"
+echo
+
+# Boot virtual machine.
+echo 'Booting virtual machine.'
+VAGRANT_CWD=$DIRECTORY hostname=$DIRECTORY vagrant up
+echo -e "\e[1m\e[32mVirtual machine booted.\e[0m"
+echo
+
+# Show information.
+echo -e "\e[1m\e[32mVisit your new WordPress website at \e[32m\e[36mhttp://$DIRECTORY/\e[36m\e[32m.\e[32m\e[0m"
+echo
+
+# Done
+exit
