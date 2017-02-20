@@ -9,7 +9,7 @@ git clone https://github.com/kadimi/wp.dev.git && cd wp.dev && vagrant up
 ```
 Then visit http://wp.dev/ or http://192.168.33.10/.
 
-## Create a `wp.dev` Box
+## Create a wp.dev Box
 
 1. **Clone this repository**
 
