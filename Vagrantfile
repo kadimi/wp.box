@@ -13,14 +13,18 @@ if not plugins_to_install.empty?
     end
 end
 
+ip = (ENV['ip'] if ENV['ip'] != nil) || (File.read('ip').strip if File.file?('ip')) || "192.168.100.#{rand(100..200)}"
+File.write "ip", "#{ip}\n"
+
+hostname = (ENV['hostname'] if ENV['hostname'] != nil) || (File.read('hostname').strip if File.file?('hostname')) || "wp.dev"
+File.write "hostname", "#{hostname}\n"
+
 Vagrant.configure("2") do |config|
 
     config.vm.box = "scotch/box"
-    config.vm.network "private_network", ip: "192.168.33.10"
+    config.vm.network "private_network", ip: File.read('ip').strip
     config.vm.synced_folder ".", "/var/www", :mount_options => ["dmode=777", "fmode=666"]
-    config.vm.hostname = (ENV['hostname'] if ENV['hostname'] != nil) || (File.read('hostname').strip if File.file?('hostname')) || "wp.dev"
-    File.write "hostname", "#{config.vm.hostname}\n"
-
+    config.vm.hostname = File.read('hostname').strip
     config.vm.provision "shell", inline: <<-SHELL
 
         # Install Composer.

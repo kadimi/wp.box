@@ -1,2 +1,4 @@
-.vagrant
-public
+hostname
+ip
+public/
+.vagrant/
