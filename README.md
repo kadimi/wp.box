@@ -7,7 +7,7 @@
 ```shell
 git clone https://github.com/kadimi/wp.dev.git && cd wp.dev && vagrant up
 ```
-Then visit http://wp.dev/ or http://192.168.33.10/.
+Then visit http://wp.dev/.
 
 ## Create a wp.dev Box
 
@@ -30,13 +30,6 @@ Then visit http://wp.dev/ or http://192.168.33.10/.
   # # For http://awesome.box/, provide a hostname with the first `vagrant up`
   # hostname='awesome.box' vagrant up
   ```
-1. **Update `/etc/hosts` (can be [automated](https://github.com/cogitatio/vagrant-hostsupdater "The Vagrant::Hostsupdater plugin adds an entry to your /etc/hosts file on the host system"))**
-
-  ```
-  192.168.33.10  wp.dev
-  # 192.168.33.10  awesome.box # Or whatever hostname you provided.
-  ```
-
 1. **Visit website**
 
   URL is http://wp.dev/ or whatever hostname you provided.
