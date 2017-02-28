@@ -26,13 +26,13 @@ fi
 
 # Destroy virtual machine.
 echo 'Destroying virtual machine.'
-VAGRANT_CWD=$DIRECTORY vagrant destroy -f
+(cd "$DIRECTORY" && vagrant destroy -f)
 echo -e "\e[1m\e[32mVirtual machine destroyed.\e[0m"
 echo
 
 # Delete directory.
 echo 'Deleting directory.'
-rm -fr $DIRECTORY
+rm -fr "$DIRECTORY"
 echo -e "\e[1m\e[32mDirectory deleted.\e[0m"
 echo
 

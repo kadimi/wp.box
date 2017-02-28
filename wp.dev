@@ -25,7 +25,7 @@ echo
 
 # Boot virtual machine.
 echo 'Booting virtual machine.'
-VAGRANT_CWD=$DIRECTORY hostname=$DIRECTORY vagrant up
+(cd "$DIRECTORY" && hostname="$DIRECTORY" vagrant up)
 echo -e "\e[1m\e[32mVirtual machine booted.\e[0m"
 echo
 
