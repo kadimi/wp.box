@@ -48,6 +48,12 @@ Vagrant.configure("2") do |config|
         echo 'Updating WP-CLI'
         wp cli update --allow-root --yes
 
+        # Install WP-CLI completions
+        echo 'Installing WP-CLI completion'
+        mkdir -p '/usr/local/share/wp-cli'
+        wget https://github.com/wp-cli/wp-cli/raw/master/utils/wp-completion.bash -O /usr/local/share/wp-cli/wp-completion.bash > /dev/null 2>&1
+        echo 'source /usr/local/share/wp-cli/wp-completion.bash' >> /home/vagrant/.bash_profile
+
         # Download WordPress.
         echo 'Downloading WordPress'
         wp core download --allow-root
@@ -94,7 +100,7 @@ Vagrant.configure("2") do |config|
         echo '                                                                  '
         echo '                                                                  '
         echo 'Your WordPress website details:                                   '
-        echo '- URL      : http://#{config.vm.hostname}/                        '
+        echo '- URL      : http://#{config.vm.hostname}                         '
         echo '- Username : admin                                                '
         echo '- Password : password                                             '
         echo '                                                                  '
