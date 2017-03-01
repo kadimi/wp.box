@@ -27,10 +27,9 @@ Vagrant.configure("2") do |config|
     config.vm.hostname = File.read('hostname').strip
     config.vm.provision "shell", inline: <<-SHELL
 
-        # Install Composer.
-        echo 'Installing composer'
-        curl -Ss https://getcomposer.org/installer | php
-        mv composer.phar /usr/bin/composer
+        # Update Composer.
+        echo 'Updating composer'
+        composer self-update > /dev/null 2>&1
 
         # Create the directory.
         mkdir -p /var/www/public/
