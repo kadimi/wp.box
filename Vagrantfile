@@ -28,8 +28,12 @@ Vagrant.configure("2") do |config|
     config.vm.provision "shell", inline: <<-SHELL
 
         # Update Composer.
-        echo 'Updating composer'
+        echo 'Updating Composer'
         composer self-update > /dev/null 2>&1
+
+        # Add Composer to path.
+        echo 'Adding Composer to PATH'
+        echo 'PATH="$HOME/.composer/vendor/bin:$PATH"' >> /home/vagrant/.profile
 
         # Create the directory.
         mkdir -p /var/www/public/
@@ -51,7 +55,7 @@ Vagrant.configure("2") do |config|
         echo 'Installing WP-CLI completion'
         mkdir -p '/usr/local/share/wp-cli'
         wget https://github.com/wp-cli/wp-cli/raw/master/utils/wp-completion.bash -O /usr/local/share/wp-cli/wp-completion.bash > /dev/null 2>&1
-        echo 'source /usr/local/share/wp-cli/wp-completion.bash' >> /home/vagrant/.bash_profile
+        echo 'source /usr/local/share/wp-cli/wp-completion.bash' >> /home/vagrant/.profile
 
         # Download WordPress.
         echo 'Downloading WordPress'
