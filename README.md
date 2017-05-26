@@ -59,5 +59,9 @@ A lot of tools are included, but more importantly:
 Something like this running periodically:
 
 ```bash
-D='/var/www/public/wp-content/backup'; mkdir -p $D; wp db export $D/"`date +"db-%s-%F-%H-%M-%S.sql"`" --add-drop-table
+#!/usr/bin/env bash
+
+D='/var/www/public/wp-content/backup';
+mkdir -p $D;
+wp db export $D/"`date +"db-%s-%F-%H-%M-%S.sql"`" --add-drop-table
 ```
