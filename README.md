@@ -51,3 +51,13 @@ A lot of tools are included, but more importantly:
 - **Database**
   - Username is `root`
   - Password is `root`
+
+## Planned
+
+### Automated backups
+
+Something like this running periodically:
+
+```bash
+D='wp-content/backup'; mkdir -p $D; wp db export $D/"`date +"db-%s-%F-%H-%M-%S.sql"`" --add-drop-table
+```
