@@ -63,5 +63,6 @@ Something like this running periodically:
 
 D='/var/www/public/wp-content/backup';
 mkdir -p $D;
-wp db export $D/"`date +"db-%s-%F-%H-%M-%S.sql"`" --add-drop-table
+wp db export $D/"`date +"db-%s-%F-%H-%M-%S.sql"`" --add-drop-table;
+
 ```
