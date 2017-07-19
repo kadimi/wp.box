@@ -5,7 +5,7 @@
 ## TLDR;
 
 ```shell
-git clone https://github.com/kadimi/wp.dev.git && cd wp.dev && chmod +x wp && vagrant up
+git clone https://github.com/kadimi/wp.dev.git && cd wp.dev && vagrant up
 ```
 Then visit http://wp.dev/.
 
@@ -16,10 +16,10 @@ Then visit http://wp.dev/.
   ```shell
   git clone https://github.com/kadimi/wp.dev.git awesome.box
   ```
-2. **Change directory and make `wp` executable**
+2. **Change directory**
 
   ```shell
-  cd awesome.box && chmod +x wp
+  cd awesome.box
   ```
 3. **Bring machine up**
 
