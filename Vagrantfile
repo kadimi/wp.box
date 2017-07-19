@@ -22,6 +22,7 @@ File.write "hostname", "#{hostname}\n"
 Vagrant.configure("2") do |config|
 
     config.vm.box = "scotch/box"
+    config.vm.box_version = "2.5"
     config.vm.network "private_network", ip: File.read('ip').strip
     config.vm.synced_folder ".", "/var/www", :mount_options => ["dmode=777", "fmode=666"]
     config.vm.hostname = File.read('hostname').strip
