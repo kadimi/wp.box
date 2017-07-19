@@ -42,6 +42,34 @@ A lot of tools are included, but more importantly:
 - Composer
 - WP-CLI
 
+## WP-CLI
+
+You can run WP-CLI commands directoly from the host machine, no need for `vagrant ssh`, here are some examples:
+
+<pre>
+<b>$ ./wp plugin list</b>
++----------------+----------+--------+---------+
+| name           | status   | update | version |
++----------------+----------+--------+---------+
+| jetpack        | inactive | none   | 5.1     |
+| lessphp        | active   | none   | 2.0.1   |
+| ns-theme-check | active   | none   | 0.1.4   |
+| starter        | active   | none   | 1.0.0   |
++----------------+----------+--------+---------+
+Connection to 127.0.0.1 closed.
+
+<b>$ ./wp plugin search git</b>
+Success: Showing 10 of 1325 plugins.
++-------------------------------+-----------------------+--------+
+| name                          | slug                  | rating |
++-------------------------------+-----------------------+--------+
+| WordPress  GitHub Sync        | wp-github-sync        | 100    |
+| Event List                    | event-list            | 92     |
+| ...                           | ...                   | ...    |
++-------------------------------+-----------------------+--------+
+Connection to 127.0.0.1 closed.
+</pre>
+
 ## Administrators
 
 - **WordPress**
