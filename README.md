@@ -24,23 +24,23 @@ Then visit http://wp.dev/.
 3. **Bring machine up**
 
   ```shell
-  # For http://wp.dev/
-  vagrant up
+  # # For http://wp.dev/
+  # vagrant up
 
-  # # For http://awesome.box/, provide a hostname with the first `vagrant up`
-  # hostname='awesome.box' vagrant up
+  # For http://awesome.box/, provide a hostname with the first `vagrant up`
+  hostname='awesome.box' vagrant up
   ```
 4. **Visit website**
 
-  URL is http://wp.dev/ or whatever hostname you provided.
+  URL is http://wp.dev/ unless you provided a hostname, e.g. http://awesome.box/.
 
 ## Included out of the box
 
 A lot of tools are included, but more importantly:
 
-- Adminer (http://wp.dev/adminer.php)
+- Adminer at /adminer.php
 - Composer
-- WP-CLI (`wp` from guest or `./wp` from host)
+- WP-CLI, `wp` from guest or `./wp` from host
 
 ## WP-CLI
 
@@ -90,5 +90,4 @@ Something like this running periodically:
 D='/var/www/public/wp-content/backup';
 mkdir -p $D;
 wp db export $D/"`date +"db-%s-%F-%H-%M-%S.sql"`" --add-drop-table;
-
 ```
