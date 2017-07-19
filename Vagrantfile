@@ -22,7 +22,6 @@ File.write "hostname", "#{hostname}\n"
 Vagrant.configure("2") do |config|
 
     config.vm.box = "scotch/box"
-    config.vm.box_version = "2.5"
     config.vm.network "private_network", ip: File.read('ip').strip
     config.vm.synced_folder ".", "/var/www", :mount_options => ["dmode=777", "fmode=666"]
     config.vm.hostname = File.read('hostname').strip
@@ -50,7 +49,8 @@ Vagrant.configure("2") do |config|
 
         # Update WP-CLI.
         echo 'Updating WP-CLI'
-        wp cli update --allow-root --yes
+        rm /usr/local/bin/wp > /dev/null 2>&1
+        composer global require wp-cli/wp-cli > /dev/null 2>&1
 
         # Install WP-CLI completions
         echo 'Installing WP-CLI completion'
