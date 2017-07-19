@@ -16,12 +16,12 @@ Then visit http://wp.dev/.
   ```shell
   git clone https://github.com/kadimi/wp.dev.git awesome.box
   ```
-1. **Change directory**
+2. **Change directory**
 
   ```shell
   cd awesome.box
   ```
-1. **Bring machine up**
+3. **Bring machine up**
 
   ```shell
   # For http://wp.dev/
@@ -30,7 +30,7 @@ Then visit http://wp.dev/.
   # # For http://awesome.box/, provide a hostname with the first `vagrant up`
   # hostname='awesome.box' vagrant up
   ```
-1. **Visit website**
+4. **Visit website**
 
   URL is http://wp.dev/ or whatever hostname you provided.
 
