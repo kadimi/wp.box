@@ -41,7 +41,7 @@ Vagrant.configure("2") do |config|
 
         # Download adminer.
         echo 'Downloading adminer'
-        wget www.adminer.org/static/download/4.2.5/adminer-4.2.5-mysql-en.php -O adminer.php > /dev/null 2>&1
+        curl -sL https://github.com/vrana/adminer/releases/download/v4.3.1/adminer-4.3.1-mysql-en.php > adminer.php
 
         # Create the database.
         echo 'Creating the database'
@@ -49,13 +49,12 @@ Vagrant.configure("2") do |config|
 
         # Update WP-CLI.
         echo 'Updating WP-CLI'
-        rm /usr/local/bin/wp > /dev/null 2>&1
-        composer global require wp-cli/wp-cli > /dev/null 2>&1
+        curl -sL https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar > /usr/local/bin/wp
 
         # Install WP-CLI completions
         echo 'Installing WP-CLI completion'
         mkdir -p '/usr/local/share/wp-cli'
-        wget https://github.com/wp-cli/wp-cli/raw/master/utils/wp-completion.bash -O /usr/local/share/wp-cli/wp-completion.bash > /dev/null 2>&1
+        curl -sL https://raw.githubusercontent.com/wp-cli/wp-cli/master/utils/wp-completion.bash > /usr/local/share/wp-cli/wp-completion.bash
         echo 'source /usr/local/share/wp-cli/wp-completion.bash' >> /home/vagrant/.profile
 
         # Download WordPress.
