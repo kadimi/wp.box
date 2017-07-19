@@ -5,7 +5,7 @@
 ## TLDR;
 
 ```shell
-git clone https://github.com/kadimi/wp.dev.git && cd wp.dev && vagrant up
+git clone https://github.com/kadimi/wp.dev.git && cd wp.dev && chmod +x wp && vagrant up
 ```
 Then visit http://wp.dev/.
 
@@ -16,10 +16,10 @@ Then visit http://wp.dev/.
   ```shell
   git clone https://github.com/kadimi/wp.dev.git awesome.box
   ```
-2. **Change directory**
+2. **Change directory and make `wp` executable**
 
   ```shell
-  cd awesome.box
+  cd awesome.box && chmod +x wp
   ```
 3. **Bring machine up**
 
@@ -38,9 +38,9 @@ Then visit http://wp.dev/.
 
 A lot of tools are included, but more importantly:
 
-- Adminer (located at `.../adminer.php`)
+- Adminer (http://wp.dev/adminer.php)
 - Composer
-- WP-CLI
+- WP-CLI (`wp` from guest or `./wp` from host)
 
 ## WP-CLI
 
