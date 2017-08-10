@@ -27,13 +27,28 @@ Vagrant.configure("2") do |config|
     config.vm.hostname = File.read('hostname').strip
     config.vm.provision "shell", inline: <<-SHELL
 
+        # Remove faulty repository.
+        rm /etc/apt/sources.list.d/ondrej-php5-5_6-trusty.list > /dev/null 2>&1
+
+        # Update package list.
+        echo 'Updating APT package list'
+        apt-get update > /dev/null 2>&1
+
+        # Install php-common, php-xml and php-xdebug.
+        echo 'Installing php-common, php-xml and php-xdebug'
+        apt-get install -y php7.0-common php7.0-xml php7.0-xdebug > /dev/null 2>&1
+
         # Update Composer.
         echo 'Updating Composer'
         composer self-update > /dev/null 2>&1
 
-        # Add Composer to path.
-        echo 'Adding Composer to PATH'
+        # Add Composer to path for user `vagrant`.
+        echo 'Adding Composer to PATH for user `vagrant`'
         echo 'PATH="$HOME/.composer/vendor/bin:$PATH"' >> /home/vagrant/.profile
+
+        # Install PHPUnit for user `vagrant`.
+        echo 'Installing PHPUnit for user `vagrant`'
+        sudo su -c "composer global require phpunit/phpunit" vagrant > /dev/null 2>&1
 
         # Create the directory.
         mkdir -p /var/www/public/
@@ -81,7 +96,7 @@ Vagrant.configure("2") do |config|
 
         # Uninstall Hello and Akismet.
         echo 'Uninstalling Hello and Akismet'
-        wp plugin uninstall --allow-root hello akismet
+        wp plugin uninstall --allow-root hello akismet > /dev/null 2>&1
 
         # Done.
         echo 'Done!'
