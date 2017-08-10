@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-required_plugins = %w(vagrant-hostsupdater)
+required_plugins = %w(vagrant-hostsupdater vagrant-reload)
 
 plugins_to_install = required_plugins.select { |plugin| not Vagrant.has_plugin? plugin }
 if not plugins_to_install.empty?
@@ -22,9 +22,36 @@ File.write "hostname", "#{hostname}\n"
 Vagrant.configure("2") do |config|
 
     config.vm.box = "scotch/box"
+    config.vm.graceful_halt_timeout = 10
     config.vm.network "private_network", ip: File.read('ip').strip
     config.vm.synced_folder ".", "/var/www", :mount_options => ["dmode=777", "fmode=666"]
     config.vm.hostname = File.read('hostname').strip
+
+    config.vm.post_up_message = "
+                                                                          
+        ##################################################################
+                                                                          
+        Thank you for developing with wp.dev!                             
+                                                                          
+                                                                          
+                                                _|                        
+        _|      _|      _|  _|_|_|          _|_|_|    _|_|    _|      _|  
+        _|      _|      _|  _|    _|      _|    _|  _|_|_|_|  _|      _|  
+          _|  _|  _|  _|    _|    _|      _|    _|  _|          _|  _|    
+            _|      _|      _|_|_|    _|    _|_|_|    _|_|_|      _|      
+                            _|                                            
+                            _|                                            
+                                                                          
+                                                                          
+                                                                          
+        Your WordPress website details:                                   
+        - URL      : http://#{config.vm.hostname}                         
+        - Username : admin                                                
+        - Password : password                                             
+                                                                          
+        ##################################################################
+    ".gsub(/^\s{8}/, '')
+
     config.vm.provision "shell", inline: <<-SHELL
 
         # Remove faulty repository.
@@ -101,29 +128,15 @@ Vagrant.configure("2") do |config|
         # Done.
         echo 'Done!'
 
-        # Show website information.
-        echo '##################################################################'
-        echo '                                                                  '
-        echo 'Thank you for developing with wp.dev!                             '
-        echo '                                                                  '
-        echo '                                                                  '
-        echo '                                        _|                        '
-        echo '_|      _|      _|  _|_|_|          _|_|_|    _|_|    _|      _|  '
-        echo '_|      _|      _|  _|    _|      _|    _|  _|_|_|_|  _|      _|  '
-        echo '  _|  _|  _|  _|    _|    _|      _|    _|  _|          _|  _|    '
-        echo '    _|      _|      _|_|_|    _|    _|_|_|    _|_|_|      _|      '
-        echo '                    _|                                            '
-        echo '                    _|                                            '
-        echo '                                                                  '
-        echo '                                                                  '
-        echo '                                                                  '
-        echo 'Your WordPress website details:                                   '
-        echo '- URL      : http://#{config.vm.hostname}                         '
-        echo '- Username : admin                                                '
-        echo '- Password : password                                             '
-        echo '                                                                  '
-        echo '##################################################################'
+        # Delete motd.tail which contains the original Scotch box splash screen.
+        rm /etc/motd.tail > /dev/null 2>&1
+
+        # Update splash message.
+        echo '#{config.vm.post_up_message}' >> /etc/motd.tail
 
     SHELL
+
+    # Reboot for SSH splash message to take effect.
+    config.vm.provision :reload
 
 end
