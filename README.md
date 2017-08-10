@@ -40,7 +40,9 @@ A lot of tools are included, but more importantly:
 
 - Adminer at /adminer.php
 - Composer
+- PHPUnit
 - WP-CLI, `wp` from guest or `./wp` from host
+- Xdebug
 
 ## WP-CLI
 
