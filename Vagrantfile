@@ -61,9 +61,9 @@ Vagrant.configure("2") do |config|
         echo 'Updating APT package list'
         apt-get update > /dev/null 2>&1
 
-        # Install php-common, php-xml and php-xdebug.
-        echo 'Installing php-common, php-xml and php-xdebug'
-        apt-get install -y php7.0-common php7.0-xml php7.0-xdebug > /dev/null 2>&1
+        # Install php-common, php-xml, php-xdebug and subversion.
+        echo 'Installing php-common, php-xml, php-xdebug and subversion'
+        apt-get install -y php7.0-common php7.0-xml php7.0-xdebug subversion > /dev/null 2>&1
 
         # Update Composer.
         echo 'Updating Composer'
