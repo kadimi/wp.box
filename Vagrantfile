@@ -65,6 +65,10 @@ Vagrant.configure("2") do |config|
         echo 'Installing php-common, php-xml, php-xdebug and subversion'
         apt-get install -y php7.0-common php7.0-xml php7.0-xdebug subversion > /dev/null 2>&1
 
+        # Enable Zend OPcache.
+        echo 'Enabling Zend OPcache'
+        sed -i s/"opcache.enable = 0"/"opcache.enable = 1"/g /etc/php/7.0/apache2/conf.d/user.ini > /dev/null 2>&1
+
         # Update Composer.
         echo 'Updating Composer'
         composer self-update > /dev/null 2>&1
