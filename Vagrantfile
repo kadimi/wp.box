@@ -95,7 +95,7 @@ Vagrant.configure("2") do |config|
 
         # Update WP-CLI.
         echo 'Updating WP-CLI'
-        curl -sL https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar > /usr/local/bin/wp
+        curl -sL https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli-nightly.phar > /usr/local/bin/wp
 
         # Install WP-CLI completions
         echo 'Installing WP-CLI completion'
