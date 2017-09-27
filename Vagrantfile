@@ -81,14 +81,6 @@ Vagrant.configure("2") do |config|
         echo 'Installing PHPUnit for user `vagrant`'
         sudo su -c "composer global require phpunit/phpunit" vagrant > /dev/null 2>&1
 
-        # Create the directory.
-        mkdir -p /var/www/public/
-        cd /var/www/public/
-
-        # Download adminer.
-        echo 'Downloading adminer'
-        curl -sL https://github.com/vrana/adminer/releases/download/v4.3.1/adminer-4.3.1-mysql-en.php > adminer.php
-
         # Create the database.
         echo 'Creating the database'
         mysql -u root -proot -e 'CREATE DATABASE IF NOT EXISTS `#{config.vm.hostname}`'
@@ -105,7 +97,16 @@ Vagrant.configure("2") do |config|
 
         # Download WordPress.
         echo 'Downloading WordPress'
-        wp core download --allow-root
+        rm -fr /var/www/public > /dev/null 2>&1
+        git clone https://github.com/WordPress/WordPress.git /var/www/public > /dev/null 2>&1
+        rm -fr /var/www/public/.git > /dev/null 2>&1
+
+        # Change directory.
+        cd /var/www/public/
+
+        # Download adminer.
+        echo 'Downloading adminer'
+        curl -sL https://github.com/vrana/adminer/releases/download/v4.3.1/adminer-4.3.1-mysql-en.php > adminer.php
 
         # Create WordPress configuration file.
         echo 'Creating WordPress configuration file'
