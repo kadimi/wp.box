@@ -26,6 +26,7 @@ Vagrant.configure("2") do |config|
     config.vm.network "private_network", ip: File.read('ip').strip
     config.vm.synced_folder ".", "/var/www", :mount_options => ["dmode=777", "fmode=666"]
     config.vm.hostname = File.read('hostname').strip
+    config.vm.network "forwarded_port", guest: 80, host: 8080
 
     config.vm.post_up_message = "
                                                                           
