@@ -75,10 +75,14 @@ Connection to 127.0.0.1 closed.
 - **WordPress**
   - Username is `admin`
   - Password is `password`
-  
+
 - **Database**
   - Username is `root`
   - Password is `root`
+
+## Miscellaneous
+
+- Port `8080` on the host machine is forwarded to port `80` on the guest machine, this comes in handly if you want to show your website over the Internet when you are behind a rooter (you will probably be using No-IP, Dyn or similar).
 
 ## Planned
 
