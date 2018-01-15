@@ -13,11 +13,14 @@ if not plugins_to_install.empty?
     end
 end
 
-ip = (ENV['ip'] if ENV['ip'] != nil) || (File.read('ip').strip if File.file?('ip')) || "192.168.100.#{rand(100..200)}"
+ip = (ENV['ip'] if ENV['ip'] != nil) || (File.read('ip').strip if File.file?('ip')) || "192.168.100.#{rand(100..199)}"
 File.write "ip", "#{ip}\n"
 
 hostname = (ENV['hostname'] if ENV['hostname'] != nil) || (File.read('hostname').strip if File.file?('hostname')) || "wp.dev"
 File.write "hostname", "#{hostname}\n"
+
+port = (ENV['port'] if ENV['port'] != nil) || (File.read('port').strip if File.file?('port')) || rand(8800..8899)
+File.write "port", "#{port}\n"
 
 Vagrant.configure("2") do |config|
 
@@ -26,7 +29,7 @@ Vagrant.configure("2") do |config|
     config.vm.network "private_network", ip: File.read('ip').strip
     config.vm.synced_folder ".", "/var/www", :mount_options => ["dmode=777", "fmode=666"]
     config.vm.hostname = File.read('hostname').strip
-    config.vm.network "forwarded_port", guest: 80, host: 8080
+    config.vm.network "forwarded_port", guest: 80, host: File.read('port').strip
 
     config.vm.post_up_message = "
                                                                           
