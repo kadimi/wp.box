@@ -133,6 +133,10 @@ Vagrant.configure("2") do |config|
         echo 'Uninstalling Hello and Akismet'
         wp plugin uninstall --allow-root hello akismet > /dev/null 2>&1
 
+        # Flush permalinks.
+        echo 'Flushing permalinks'
+        wp rewrite flush --allow-root > /dev/null 2>&1
+
         # Done.
         echo 'Done!'
 
