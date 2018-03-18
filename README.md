@@ -1,20 +1,20 @@
-# wp.dev – A Lightweight WordPress Box
+# wp.box – A Lightweight WordPress Box
 
-![](https://cdn.rawgit.com/kadimi/wp.dev/master/banner.png "wp.dev banner")
+![](https://cdn.rawgit.com/kadimi/wp.box/master/banner.png "wp.box banner")
 
 ## TLDR;
 
 ```shell
-git clone https://github.com/kadimi/wp.dev.git && cd wp.dev && vagrant up
+git clone https://github.com/kadimi/wp.box.git && cd wp.box && vagrant up
 ```
-Then visit http://wp.dev/.
+Then visit http://wp.box/.
 
-## Create a wp.dev Box
+## Create a wp.box Box
 
 1. **Clone this repository**
 
   ```shell
-  git clone https://github.com/kadimi/wp.dev.git awesome.box
+  git clone https://github.com/kadimi/wp.box.git awesome.box
   ```
 2. **Change directory**
 
@@ -24,7 +24,7 @@ Then visit http://wp.dev/.
 3. **Bring machine up**
 
   ```shell
-  # # For http://wp.dev/
+  # # For http://wp.box/
   # vagrant up
 
   # For http://awesome.box/, provide a hostname with the first `vagrant up`
@@ -32,7 +32,7 @@ Then visit http://wp.dev/.
   ```
 4. **Visit website**
 
-  URL is http://wp.dev/ unless you provided a hostname, e.g. http://awesome.box/.
+  URL is http://wp.box/ unless you provided a hostname, e.g. http://awesome.box/.
 
 ## Included out of the box
 

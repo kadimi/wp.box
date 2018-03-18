@@ -1,4 +1,4 @@
-#!/bin/bash	
+#!/bin/bash
 
 # Require one parameter.
 if ! [ "$#" -eq 1 ]

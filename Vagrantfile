@@ -16,7 +16,7 @@ end
 ip = (ENV['ip'] if ENV['ip'] != nil) || (File.read('ip').strip if File.file?('ip')) || "192.168.100.#{rand(100..199)}"
 File.write "ip", "#{ip}\n"
 
-hostname = (ENV['hostname'] if ENV['hostname'] != nil) || (File.read('hostname').strip if File.file?('hostname')) || "wp.dev"
+hostname = (ENV['hostname'] if ENV['hostname'] != nil) || (File.read('hostname').strip if File.file?('hostname')) || "wp.box"
 File.write "hostname", "#{hostname}\n"
 
 port = (ENV['port'] if ENV['port'] != nil) || (File.read('port').strip if File.file?('port')) || rand(8800..8899)
@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
                                                                           
         ##################################################################
                                                                           
-        Thank you for developing with wp.dev!                             
+        Thank you for developing with wp.box!                             
                                                                           
                                                                           
                                                 _|                        
