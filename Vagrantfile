@@ -25,6 +25,7 @@ File.write "port", "#{port}\n"
 Vagrant.configure("2") do |config|
 
     config.vm.box = "scotch/box"
+    config.vm.box_url = "https://vagrantcloud.com/scotch/box"
     config.vm.graceful_halt_timeout = 10
     config.vm.network "private_network", ip: File.read('ip').strip
     config.vm.synced_folder ".", "/var/www", :mount_options => ["dmode=777", "fmode=666"]
