@@ -82,7 +82,7 @@ Connection to 127.0.0.1 closed.
 
 ## Miscellaneous
 
-- Port `8080` on the host machine is forwarded to port `80` on the guest machine, this comes in handly if you want to show your website over the Internet when you are behind a rooter (you will probably be using No-IP, Dyn or similar).
+- A random port is chosen on the first boot from `8800` to `8899` and is stored in a file named `port`. The port is forwarded to port `80` on the guest machine. This comes in handly if you want to show your website over the Internet when you are behind a rooter (you will probably be using No-IP, Dyn or similar).
 
 ## Planned
 
