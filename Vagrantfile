@@ -68,7 +68,7 @@ Vagrant.configure("2") do |config|
 
         # Install php-common, php-xml, php-xdebug and subversion.
         echo 'Installing php-common, php-xml, php-xdebug and subversion'
-        apt-get install -y php7.0-common php7.0-xml php7.0-xdebug subversion > /dev/null 2>&1
+        apt-get install -y php-common php-xml php-xdebug subversion > /dev/null 2>&1
 
         # Enable Zend OPcache.
         echo 'Enabling Zend OPcache'
