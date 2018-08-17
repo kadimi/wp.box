@@ -86,7 +86,8 @@ Vagrant.configure("2") do |config|
         echo 'Installing PHPUnit for user `vagrant`'
         sudo su -c "composer global require phpunit/phpunit" vagrant > /dev/null 2>&1
 
-        # Create the directory.
+        # Create empty `public` directory.
+        rm -fr /var/www/public/ > /dev/null 2>&1
         mkdir -p /var/www/public/
         cd /var/www/public/
 
@@ -96,7 +97,8 @@ Vagrant.configure("2") do |config|
 
         # Create the database.
         echo 'Creating the database'
-        mysql -u root -proot -e 'CREATE DATABASE IF NOT EXISTS `#{config.vm.hostname}`'
+        MYSQL_PWD=root mysql -u root -e 'DROP DATABASE IF EXISTS `#{config.vm.hostname}`'
+        MYSQL_PWD=root mysql -u root -e 'CREATE DATABASE `#{config.vm.hostname}`'
 
         # Update WP-CLI.
         echo 'Updating WP-CLI'
