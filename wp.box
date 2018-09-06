@@ -19,7 +19,7 @@ fi
 
 # Clone repository
 echo 'Cloning kadimi/wp.box repository.'
-git clone "git@github.com:kadimi/wp.box.git" "$DIRECTORY"
+git clone "https://github.com/kadimi/wp.box.git" "$DIRECTORY"
 echo -e "\e[1m\e[32mRepository cloned.\e[0m"
 echo
 
