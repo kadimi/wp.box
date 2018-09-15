@@ -1,6 +1,6 @@
 # wp.box – A Lightweight WordPress Box
 
-![](https://cdn.rawgit.com/kadimi/wp.box/master/banner.png "wp.box banner")
+![](https://cdn.rawgit.com/kadimi/wp.box/master/misc/banner.png "wp.box banner")
 
 ## TLDR;
 
