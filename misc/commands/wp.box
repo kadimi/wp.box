@@ -9,7 +9,7 @@ then
 fi
 DIRECTORY=$1
 
-# Check that directory does not exists.
+# Check that directory does not exist.
 if [ -d "$DIRECTORY" ]
 then
 	echo -e "\e[1m\e[31mError: Directory ./$DIRECTORY existis, Exiting.\e[0m"
