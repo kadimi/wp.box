@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-required_plugins = %w(vagrant-hostsupdater vagrant-reload vagrant-vbguest)
+required_plugins = %w(vagrant-hostsupdater)
 
 plugins_to_install = required_plugins.select { |plugin| not Vagrant.has_plugin? plugin }
 if not plugins_to_install.empty?
@@ -39,11 +39,11 @@ Vagrant.configure("2") do |config|
         Thank you for developing with wp.box!                             
                                                                           
                                                                           
-                                                _|                        
-        _|      _|      _|  _|_|_|          _|_|_|    _|_|    _|      _|  
-        _|      _|      _|  _|    _|      _|    _|  _|_|_|_|  _|      _|  
-          _|  _|  _|  _|    _|    _|      _|    _|  _|          _|  _|    
-            _|      _|      _|_|_|    _|    _|_|_|    _|_|_|      _|      
+                                          _|                              
+        _|      _|      _|  _|_|_|        _|_|_|      _|_|    _|    _|    
+        _|      _|      _|  _|    _|      _|    _|  _|    _|    _|_|      
+          _|  _|  _|  _|    _|    _|      _|    _|  _|    _|  _|    _|      
+            _|      _|      _|_|_|    _|  _|_|_|      _|_|    _|    _|    
                             _|                                            
                             _|                                            
                                                                           
@@ -82,8 +82,9 @@ Vagrant.configure("2") do |config|
         echo 'Adding Composer to PATH for user `vagrant`'
         echo 'PATH="$HOME/.composer/vendor/bin:$PATH"' >> /home/vagrant/.profile
 
-        # Install PHPUnit for user `vagrant`.
-        echo 'Installing PHPUnit for user `vagrant`'
+        # Install hirak/prestissimo and PHPUnit for user `vagrant`.
+        echo 'Installing PHPUnit and hirak/prestissimo for user `vagrant`'
+        sudo su -c "composer global require hirak/prestissimo" vagrant > /dev/null 2>&1
         sudo su -c "composer global require phpunit/phpunit" vagrant > /dev/null 2>&1
 
         # Create empty `public` directory.
@@ -144,14 +145,10 @@ Vagrant.configure("2") do |config|
         echo 'Done!'
 
         # Delete motd.tail which contains the original Scotch box splash screen.
-        rm /etc/motd.tail > /dev/null 2>&1
+        rm /etc/motd > /dev/null 2>&1
 
         # Update splash message.
-        echo '#{config.vm.post_up_message}' >> /etc/motd.tail
+        echo '#{config.vm.post_up_message}' >> /etc/motd
 
     SHELL
-
-    # Reboot for SSH splash message to take effect.
-    config.vm.provision :reload
-
 end
