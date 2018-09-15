@@ -9,7 +9,7 @@ then
 fi
 DIRECTORY=$1
 
-# Create if needed and cd into .wp.box home directory.
+# Create if needed and cd into wp.box home directory.
 WP_BOX_HOME="$HOME/wp.box"
 mkdir -p "$WP_BOX_HOME"
 cd "$WP_BOX_HOME"
