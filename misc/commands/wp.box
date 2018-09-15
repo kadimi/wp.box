@@ -3,16 +3,21 @@
 # Require one parameter.
 if ! [ "$#" -eq 1 ]
 then
-	echo -e "\e[1m\e[31mError: Hostname required. Exiting.\e[0m"
+	echo -e "\e[1m\e[31mError: Hostname required, e.g. \`wp.box example.test\`.\e[0m"
 	echo
 	exit 1
 fi
 DIRECTORY=$1
 
+# Create if needed and cd into .wp.box home directory.
+WP_BOX_HOME="$HOME/.wp.box"
+mkdir -p "$WP_BOX_HOME"
+cd "$WP_BOX_HOME"
+
 # Check that directory does not exist.
 if [ -d "$DIRECTORY" ]
 then
-	echo -e "\e[1m\e[31mError: Directory ./$DIRECTORY existis, Exiting.\e[0m"
+	echo -e "\e[1m\e[31mError: Project $DIRECTORY exists.\e[0m"
 	echo
 	exit 1
 fi
