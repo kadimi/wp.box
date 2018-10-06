@@ -1,0 +1,31 @@
+#!/bin/bash	
+
+# Require one parameter.
+if ! [ "$#" -eq 1 ]
+then
+	echo -e "\e[1m\e[31mError: Hostname required, e.g. \`wp.box-down example.test\`.\e[0m"
+	echo
+	exit 1
+fi
+DIRECTORY=$1
+
+# cd into wp.box home directory.
+WP_BOX_HOME="$HOME/wp.box"
+cd "$WP_BOX_HOME"
+
+# Check that directory exists.
+if ! [ -d "$DIRECTORY" ]
+then
+	echo -e "\e[1m\e[31mError: Project $DIRECTORY doesn't exist.\e[0m"
+	echo
+	exit 1
+fi
+
+# Bring virtual machine up.
+echo 'Bringing virtual machine down.'
+(cd "$DIRECTORY" && hostname="$DIRECTORY" vagrant halt)
+echo -e "\e[1m\e[32mVirtual machine shutdown.\e[0m"
+echo
+
+# Done
+exit
