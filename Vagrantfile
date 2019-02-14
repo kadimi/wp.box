@@ -70,6 +70,11 @@ Vagrant.configure("2") do |config|
         echo 'Installing php-common, php-xml, php-xdebug and subversion'
         apt-get install -y php-common php-xml php-xdebug subversion > /dev/null 2>&1
 
+        # Increase allowed upload size to 100M.
+        echo 'Increasing  allowed upload size to 100M'
+        sed -i s/"post_max_size = 8M"/"post_max_size = 120M"/g /etc/php/7.0/apache2/php.ini > /dev/null 2>&1
+        sed -i s/"upload_max_filesize = 2M"/"upload_max_filesize = 100M"/g /etc/php/7.0/apache2/php.ini > /dev/null 2>&1
+
         # Enable Zend OPcache.
         echo 'Enabling Zend OPcache'
         sed -i s/"opcache.enable = 0"/"opcache.enable = 1"/g /etc/php/7.0/apache2/conf.d/user.ini > /dev/null 2>&1
