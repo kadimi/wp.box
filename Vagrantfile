@@ -99,7 +99,7 @@ Vagrant.configure("2") do |config|
 
         # Download adminer.
         echo 'Downloading adminer'
-        curl -sL https://github.com/vrana/adminer/releases/download/v4.3.1/adminer-4.3.1-mysql-en.php > adminer.php
+        curl -sL https://github.com/vrana/adminer/releases/download/v4.7.1/adminer-4.7.1-mysql-en.php > adminer.php
 
         # Create the database.
         echo 'Creating the database'
