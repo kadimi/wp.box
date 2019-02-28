@@ -92,6 +92,11 @@ Vagrant.configure("2") do |config|
         sudo su -c "composer global require hirak/prestissimo" vagrant > /dev/null 2>&1
         sudo su -c "composer global require phpunit/phpunit" vagrant > /dev/null 2>&1
 
+        # Install and configure wp-coding-standards/wpcs for user `vagrant`.
+        echo 'Installing and configuring wp-coding-standards/wpcs for user `vagrant`'
+        sudo su -c "composer global require wp-coding-standards/wpcs" vagrant > /dev/null 2>&1
+        sudo su -c "phpcs --config-set installed_paths ~/.composer/vendor/wp-coding-standards/wpcs/" vagrant > /dev/null 2>&1
+
         # Create empty `public` directory.
         rm -fr /var/www/public/ > /dev/null 2>&1
         mkdir -p /var/www/public/
