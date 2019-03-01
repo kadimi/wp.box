@@ -164,7 +164,6 @@ Vagrant.configure("2") do |config|
 
     config.trigger.after :all do |trigger|
         if not (File.file?('Vagrantfile') && File.file?('wp'))
-            trigger.info = "Running a before trigger!"
             File.delete("ip")
             File.delete("hostname")
             File.delete("port")
