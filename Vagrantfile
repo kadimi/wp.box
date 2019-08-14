@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
     config.vm.box_url = "https://vagrantcloud.com/scotch/box"
     config.vm.graceful_halt_timeout = 10
     config.vm.network "private_network", ip: File.read('ip').strip
-    config.vm.synced_folder ".", "/var/www", nfs: true, nfs_version: 4, nfs_udp: false
+    config.vm.synced_folder ".", "/var/www", :mount_options => ["dmode=777", "fmode=666"]
     config.vm.hostname = File.read('hostname').strip
     config.vm.network "forwarded_port", guest: 80, host: File.read('port').strip
 
