@@ -73,7 +73,9 @@ Vagrant.configure("2") do |config|
         # Increase allowed upload size to 100M.
         echo 'Increasing  allowed upload size to 100M'
         sed -i s/"post_max_size = 8M"/"post_max_size = 120M"/g /etc/php/7.0/apache2/php.ini > /dev/null 2>&1
+        sed -i s/"post_max_size = 8M"/"post_max_size = 120M"/g /etc/php/7.0/cli/php.ini > /dev/null 2>&1
         sed -i s/"upload_max_filesize = 2M"/"upload_max_filesize = 100M"/g /etc/php/7.0/apache2/php.ini > /dev/null 2>&1
+        sed -i s/"upload_max_filesize = 2M"/"upload_max_filesize = 100M"/g /etc/php/7.0/cli/php.ini > /dev/null 2>&1
 
         # Enable Zend OPcache.
         echo 'Enabling Zend OPcache'
