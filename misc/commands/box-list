@@ -5,7 +5,7 @@ WP_BOX_HOME="$HOME/wp.box"
 mkdir -p "$WP_BOX_HOME"
 
 # Show wp.box home directory content
-du -h --max-depth=1 "$WP_BOX_HOME" | grep -v "$WP_BOX_HOME"$ 
+du -h --max-depth=1 -L "$WP_BOX_HOME" | grep -v "$WP_BOX_HOME"$ 
 
 # Done
 exit
