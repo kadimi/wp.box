@@ -105,9 +105,12 @@ Vagrant.configure("2") do |config|
         mkdir -p /var/www/public/
         cd /var/www/public/
 
-        # Download adminer.
-        echo 'Downloading adminer'
-        curl -sL https://github.com/vrana/adminer/releases/download/v4.7.1/adminer-4.7.1-mysql-en.php > adminer.php
+        # Install Adminer.
+        echo 'Installing Adminer'
+        mkdir -p /usr/share/adminer
+        curl -sL http://www.adminer.org/latest-mysql-en.php > /usr/share/adminer/adminer.php
+        echo "Alias /adminer.php /usr/share/adminer/adminer.php" > /etc/apache2/conf-available/adminer.conf
+        a2enconf adminer.conf
 
         # Create the database.
         echo 'Creating the database'
@@ -162,6 +165,9 @@ Vagrant.configure("2") do |config|
 
         # Update splash message.
         echo '#{config.vm.post_up_message}' >> /etc/motd
+
+        # Rertart Apache.
+        apache2ctl restart
 
     SHELL
 
